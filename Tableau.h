@@ -242,11 +242,29 @@ void affichageGrille(int horizontal, int vertical) {
 
 
         default:
+            //Condition qui repete la demande de la coordonné si il a deja tiré dessus
+            if(tableauAfficher[horizontal - 1][vertical - 1] == *"X" || tableauAfficher[horizontal - 1][vertical - 1] == *"O"){
+                tireRestant++;
+                printf("Vous avez deja touché cette case choisissez en une autre\n\n");
+                //boucle pour redemander a chaque fois les coordonée tant qu'il ne sont pas dans les règles
+                while(horizontal<1 || horizontal>10) {
+                    printf("\n\n\nChoisissez une position horizontal: ");
+                    scanf("%d", &horizontal);
+                }
+                while(vertical<1 || vertical>10) {
+                    printf("\nChoisissez une position vertical: ");
+                    scanf("%d", &vertical);
+
+                }
+            }
+            else{
+                compteur++;
+            }
             //remplace la vagellette par O
             tableauAfficher[horizontal - 1][vertical - 1] = *"O";
             printf("\n\n\nloupé\n");
             printf("Coup restant :%d\n", tireRestant);
-            compteur++;
+
     }
 
 
