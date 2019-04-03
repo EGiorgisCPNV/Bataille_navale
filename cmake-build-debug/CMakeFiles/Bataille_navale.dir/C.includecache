@@ -6,7 +6,29 @@
 
 #IncludeRegexTransform: 
 
+C:/Users/Esteban.GIORGIS/CLionProjects/BatailleNavalExa/Repository/Bataille_navale/Menu.h
+windows.h
+-
+stdlib.h
+-
+
+C:/Users/Esteban.GIORGIS/CLionProjects/BatailleNavalExa/Repository/Bataille_navale/Tableau.h
+stdlib.h
+-
+stdio.h
+-
+windows.h
+-
+
 C:/Users/Esteban.GIORGIS/CLionProjects/BatailleNavalExa/Repository/Bataille_navale/main.c
 stdio.h
+-
+Tableau.h
+C:/Users/Esteban.GIORGIS/CLionProjects/BatailleNavalExa/Repository/Bataille_navale/Tableau.h
+Menu.h
+C:/Users/Esteban.GIORGIS/CLionProjects/BatailleNavalExa/Repository/Bataille_navale/Menu.h
+windows.h
+-
+stdlib.h
 -
 

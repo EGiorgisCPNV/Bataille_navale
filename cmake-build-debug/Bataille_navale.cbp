@@ -76,6 +76,12 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="C:/Users/Esteban.GIORGIS/CLionProjects/BatailleNavalExa/Repository/Bataille_navale/Menu.h">
+			<Option target="Bataille_navale"/>
+		</Unit>
+		<Unit filename="C:/Users/Esteban.GIORGIS/CLionProjects/BatailleNavalExa/Repository/Bataille_navale/Tableau.h">
+			<Option target="Bataille_navale"/>
+		</Unit>
 		<Unit filename="C:/Users/Esteban.GIORGIS/CLionProjects/BatailleNavalExa/Repository/Bataille_navale/main.c">
 			<Option target="Bataille_navale"/>
 		</Unit>
