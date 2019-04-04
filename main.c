@@ -47,7 +47,7 @@ int main() {
 
     fprintf(filePt,"%s","Nom: ");//inscrit le mot "Nom" dans le fichier
     scanf("%s", Nom);//demande puis inscrit le nom de l'utilisateur dans la variable "Nom"
-    fprintf(filePt,"%s \n",Nom);//Inscrit le contenu de la variable "Nom" dans le fichier
+    fprintf(filePt,"%s \n",Nom);//Inscritcheh le contenu de la variable "Nom" dans le fichier
 
     fprintf(filePt,"%s","Prénom: ");//inscrit le mot "Prenom" dans le fichier
     scanf("%s", Prenom);//demande puis inscrit le nom de l'utilisateur dans la variable "Prenom"
