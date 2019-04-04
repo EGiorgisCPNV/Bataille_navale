@@ -8,6 +8,7 @@
 #include "Tableau.h"
 #include "Menu.h"
 #include <windows.h>
+#include <mmsystem.h>
 #include<stdlib.h>
 
 #pragma execution_character_set("utf-8") //Pour que le programmes reconnaice les accents
@@ -29,7 +30,9 @@ void initialisation(){
 }
 
 
+
 int main() {
+    system("color 9f");
     SetConsoleOutputCP(65001);//Pour que le programmes reconnaice les accents
 
     char Prenom[255];//variable pour le prénom
@@ -62,4 +65,5 @@ int main() {
     //pour appeler la fonction qui affiche le menu
     menu(filePt);
     fclose(filePt);
+
 }

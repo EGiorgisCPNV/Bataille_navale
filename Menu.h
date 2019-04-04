@@ -19,12 +19,14 @@ void menu(FILE* filePt){
 
 
     unsigned int choix=0;//variable pour le choix de l'utilisateur et que le numéro minimum ne soit pas négatif
+    unsigned int couleur=0;//varible pour pouvoir choisir une des couleurs a choix
 
-    while (choix !=3) //boucle qui affiche a chaque fois le menu jusqu'a qu'il demande de jouer ou de quitter
+
+    while (choix !=4) //boucle qui affiche a chaque fois le menu jusqu'a qu'il demande de jouer ou de quitter
     {
 
         //Pour choisir l'action de l'utilisateur
-        printf("Menu\n1 - Jouer\n2 - Règle du jeu\n3 - Quitter\n\nQuel est votre choix ?\n");
+        printf("Menu\n1 - Jouer\n2 - Règle du jeu\n3 - Changer la couleur\n4 - Quitter\n\nQuel est votre choix ?\n");
         scanf("%d", &choix);
 
 
@@ -32,7 +34,7 @@ void menu(FILE* filePt){
         switch (choix) {
 
             case 1:
-
+                system("color 9a");
                 printf("--------------------------------------\n           Bataille navale\n--------------------------------------\n\n\n");
                 int vertical=0;//variable qui stocke la valeur de la colonne horizontal
                 int horizontal=0;//variable qui stocke la valeur de la colonne horizontal
@@ -114,10 +116,31 @@ void menu(FILE* filePt){
                 break;
 
             case 2:
+                system("color 9a");
                 printf("\nVoici les règles:\n\n\nUne fois appuié sur le boutton jouer choisissez les position ou vous vouler tirer et vous avez 50 tires au maximum\nLe but est de couler tout les bateaux ennemis.\nA savoir qu'il y a 5 sorte de bateau : un bateau avec 2 point de vie, un de 3 point de vie, un de 3 point de vie et un de 4 point de vie et un de 5 point de vie\n\n\n");
                 reset();
                 break;
 
+            case 3:
+            printf("choisisser votre couleur(1-bleu, 2-noir, 3-jaune)");
+            scanf("%d", &couleur);
+
+            //switch pour changer les couleurs
+            switch(couleur){
+                case 1:
+                    system("color 9a");
+                    break;
+
+                case 2:
+                    system("color 9b");
+                    break;
+
+                default:
+                    system("color 9c");
+
+            }
+
+            break;
 
             default:
 
