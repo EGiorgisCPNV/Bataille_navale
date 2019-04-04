@@ -30,7 +30,7 @@ char tableauAfficher[TABLEAU_LARGEUR][TABLEAU_LONGUEUR];
 
 int compteurVictoir = 0;//Elle sert afaire une boucle avec celci pour pour stoper la partie quand il a tout couler
 int compteur=0;//se compteur sert a mettre une fin a la partie qu'elle que soit les circonstance
-int tireRestant=50;//variable qui affiche les tire restants
+int tireRestant;//variable qui affiche les tire restants
 
 
 unsigned int pointViTorpieur=0;
@@ -51,6 +51,7 @@ void reset(){
     pointViContreTorpilleur=0;
     pointViCroiseur=0;
     pointViPorteAvion=0;
+    tireRestant=NBR_MAX_DE_COUP;//variable qui affiche les tire restants
 
     //boucle qui remet la vaguelette du tableau char
     for (int ligne = 0; ligne < TABLEAU_LARGEUR; ligne++) {

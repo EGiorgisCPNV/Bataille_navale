@@ -6,14 +6,15 @@
 #include <windows.h>
 #include<stdlib.h>
 
+
 #ifndef BATAILLE_NAVSAL_1_MENU_H
 #define BATAILLE_NAVSAL_1_MENU_H
 
-
+int nbPartie;//Cette variable sert a afficher le nbr de partie faite
 
 //fonction pour afficher le menu
-void menu(){
-    FILE* score;//Cette variable sera utiliser pour enrgistrer des information dans un fichier
+void menu(FILE* filePt){
+
 
 
     unsigned int choix=0;//variable pour le choix de l'utilisateur et que le numéro minimum ne soit pas négatif
@@ -37,6 +38,8 @@ void menu(){
                 int cadrillage_horizontal;//Boucle pour noter la numérotation de 1 a 10
                 int chiffreADroite=1;//tout les chiffre a droite 1 à 10
 
+
+                nbPartie++;
 
                 printf("Voici la grille\n");
 
@@ -90,10 +93,17 @@ void menu(){
                     //Condition pour la réponse final si il gagne ou pas
                     if(compteurVictoir == NBR_PARTIE_TOTAL_BATEAU_MAX){
                         printf("\n\n\n\n\n\n\nvous aver gagner bien joué !!!\nVous avez gagné en %d coups\n\n\n\n\n", compteur);
+                        fprintf(filePt,"\nPartie %d \n", nbPartie);
+                        fprintf(filePt,"%s","Voici votre score: ");//inscrit le mot "Nom" dans le fichier
+                        fprintf(filePt,"%d"" coups\n",compteur);//Inscrit le contenu de la variable "Nom" dans le fichier
+                        reset();
+
                         break;
                     }
                     if (compteur == NBR_MAX_DE_COUP && tireRestant == 0) {
                         printf("\n\n\n\n\n\n\nVous avez perdu !\nVous n'avez pas réussi a coulé tous les bateaux\n\n\n\n\n");
+                        fprintf(filePt,"\nPartie %d \n", nbPartie);
+                        fprintf(filePt,"%s","Vous n'avez pas réussi a tout coulé");//inscrit le mot "Nom" dans le fichier
                         reset();
                         break;
                     }
