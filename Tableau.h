@@ -1,6 +1,8 @@
-//
-// Created by esteban.giorgis on 20.02.2019.
-//
+//Auteur: Esteban Giorgis
+//Titre: Bataille Navale
+//Date:13.02.2019
+//Description: Ce fichier est les tableaux utilisé
+//Version:1.0
 
 #ifndef BATAILLENAVALEXA_TABLEAU_H
 #define BATAILLENAVALEXA_TABLEAU_H

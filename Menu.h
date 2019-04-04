@@ -1,7 +1,8 @@
-//
-// Created by Esteban on 23.03.2019.
-//
-
+//Auteur: Esteban Giorgis
+//Titre: Bataille Navale
+//Date:13.02.2019
+//Description: Ce fichier est la fonction est le menu
+//Version:1.0
 
 #include <windows.h>
 #include<stdlib.h>
