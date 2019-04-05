@@ -83,7 +83,6 @@ void menu(FILE* filePt){
                     tire_restant--;
                     system("cls");
 
-
                     //appele de la fonction du tableau
                     affichage_grille(horizontal, vertical);
 

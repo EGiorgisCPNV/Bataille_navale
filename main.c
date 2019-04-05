@@ -1,7 +1,7 @@
 //Auteur: Esteban Giorgis
 //Titre: Bataille Navale
 //Date:13.02.2019
-//Description: Jeu vidéo sur une bataille navale
+//Description: Jeu vidÃ©o sur une bataille navale
 //Version:1.2
 
 #include <stdio.h>
@@ -30,7 +30,7 @@ void initialisation(){
 
     choix_grille=rand()%3+1;//Inscrit un nombre random a la variable choixGrille entre 1 et 3
 
-    //ce switch fait une selection aléatoir d'un des trois tableau d'analyse
+    //ce switch fait une selection alÃ©atoir d'un des trois tableau d'analyse
     switch(choix_grille){
         case 1:
             //boucle qui remet la vaguelette du tableau char
@@ -59,9 +59,9 @@ void initialisation(){
             }
             break;
 
-            //ce dernier case sert en cas de mauvaise valeur aléatoir due a une erreur de codage
+            //ce dernier case sert en cas de mauvaise valeur alÃ©atoir due a une erreur de codage
         default:
-            printf("\nProblème de valeur aléatoire!!\n");
+            printf("\nProblÃ¨me de valeur alÃ©atoire!!\n");
 
     }
 
@@ -73,9 +73,9 @@ int main() {
     system("color 9f");
     SetConsoleOutputCP(65001);//Pour que le programmes reconnaice les accents
 
-    char prenom[255];//variable pour le prénom
+    char prenom[255];//variable pour le prÃ©nom
     char nom[255];//variable pour le nom
-    int choix=0;//variable pour le choix de l'utilisateur et que le numéro minimum ne soit pas négatif
+    int choix=0;//variable pour le choix de l'utilisateur et que le numÃ©ro minimum ne soit pas nÃ©gatif
     int quitter;//Cette variable sers a pouvoir quitter le programme
 
     FILE* filePt;//Cette variable sera utiliser pour enrgistrer des information dans un fichier
@@ -84,14 +84,14 @@ int main() {
     initialisation();//Initialisation des variables
 
     //Pour demander l'identiter de la personne
-    printf("Veiller indiquer votre Nom puis Prénom\n");
+    printf("Veiller indiquer votre Nom puis PrÃ©nom\n");
 
 
     fprintf(filePt,"%s","Nom: ");//inscrit le mot "Nom" dans le fichier
     scanf("%s", nom);//demande puis inscrit le nom de l'utilisateur dans la variable "Nom"
     fprintf(filePt,"%s \n",nom);//Inscritcheh le contenu de la variable "Nom" dans le fichier
 
-    fprintf(filePt,"%s","Prénom: ");//inscrit le mot "Prenom" dans le fichier
+    fprintf(filePt,"%s","PrÃ©nom: ");//inscrit le mot "Prenom" dans le fichier
     scanf("%s", prenom);//demande puis inscrit le nom de l'utilisateur dans la variable "Prenom"
     fprintf(filePt,"%s\n",prenom);//Inscrit le contenu de la variable "Prenom" dans le fichier
 
