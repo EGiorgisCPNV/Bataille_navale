@@ -2,7 +2,7 @@
 //Titre: Bataille Navale
 //Date:13.02.2019
 //Description: Ce fichier est la fonction est le menu
-//Version:1.0
+//Version:1.2
 
 #include <windows.h>
 #include<stdlib.h>
@@ -11,7 +11,7 @@
 #ifndef BATAILLE_NAVSAL_1_MENU_H
 #define BATAILLE_NAVSAL_1_MENU_H
 
-int nbPartie;//Cette variable sert a afficher le nbr de partie faite
+int nb_partie;//Cette variable sert a afficher le nbr de partie faite
 
 //fonction pour afficher le menu
 void menu(FILE* filePt){
@@ -34,14 +34,13 @@ void menu(FILE* filePt){
         switch (choix) {
 
             case 1:
-                system("color 90");
                 printf("--------------------------------------\n           Bataille navale\n--------------------------------------\n\n\n");
                 int vertical=0;//variable qui stocke la valeur de la colonne horizontal
                 int horizontal=0;//variable qui stocke la valeur de la colonne horizontal
                 int cadrillage_horizontal;//Boucle pour noter la numérotation de 1 a 10
-                int chiffreADroite=1;//tout les chiffre a droite 1 à 10
+                int chiffre_a_droite=1;//tout les chiffre a droite 1 à 10
 
-                nbPartie++;
+                nb_partie++;
 
                 printf("Voici la grille\n");
 
@@ -52,26 +51,23 @@ void menu(FILE* filePt){
                 //boucle qui permet d'afficher tout le tableau
                 for (int ligne = 0; ligne < 10; ligne++) {
                     printf("\n");
-                    if(chiffreADroite==10){      //Pour affiche les chiffre verticalement
-                        printf("%d", chiffreADroite);
-                        chiffreADroite=0;
+                    if(chiffre_a_droite==10){      //Pour affiche les chiffre verticalement
+                        printf("%d", chiffre_a_droite);
+                        chiffre_a_droite=0;
                     }else{
-                        printf(" %d", chiffreADroite);
+                        printf(" %d", chiffre_a_droite);
                     }
-                    chiffreADroite++;
+                    chiffre_a_droite++;
                     for (int colonne = 0; colonne < 10; colonne++) {
-                        printf(" | %c |", tableauAfficher[ligne][colonne]);
+                        printf(" | %c |", tableau_afficher[ligne][colonne]);
 
                     }
                 }
 
-
                 printf("\n\n\nLa lettre X s'affichera a l'endroit ou vous avez touché et la lettre O s'affichera ou vous avez loupé");
 
-
                 //boucle qui permet de répéter a chaque fois les deux questions tant qu'il n'a pas perdu ou gagné
-                while(compteur <= NBR_MAX_DE_COUP || compteurVictoir <= NBR_PARTIE_TOTAL_BATEAU_MAX) {
-
+                while(compteur <= NBR_MAX_DE_COUP || compteur_victoir <= NBR_PARTIE_TOTAL_BATEAU_MAX) {
 
                     //Repete la question tant qu'il rentre une valeur qui ne correspont pas au donnée
                     while(horizontal<1 || horizontal>10) {
@@ -84,26 +80,26 @@ void menu(FILE* filePt){
                         scanf("%d", &vertical);
 
                     }
-                    tireRestant--;
+                    tire_restant--;
                     system("cls");
 
 
                     //appele de la fonction du tableau
-                    affichageGrille(horizontal, vertical);
+                    affichage_grille(horizontal, vertical);
 
                     //Condition pour la réponse final si il gagne ou pas
-                    if(compteurVictoir == NBR_PARTIE_TOTAL_BATEAU_MAX){
-                        printf("\n\n\n\n\n\n\nvous aver gagner bien joué !!!\nVous avez gagné en %d coups\n\n\n\n\n", compteur);
-                        fprintf(filePt,"\nPartie %d \n", nbPartie);
+                    if(compteur_victoir == NBR_PARTIE_TOTAL_BATEAU_MAX){
+                        printf("\n\n\n\n\n\n\nvous aver gagner bien joué !!!\nVous avez gagné en %d coups\nSi vous voulez voir le(s) score(s) et le nbr de partie joué quitter le programme et ouvrez le fichier score.txt\n\n\n\n", compteur);
+                        fprintf(filePt,"\nPartie %d \n", nb_partie);
                         fprintf(filePt,"%s","Voici votre score: ");//inscrit le mot "Nom" dans le fichier
                         fprintf(filePt,"%d"" coups\n",compteur);//Inscrit le contenu de la variable "Nom" dans le fichier
                         reset();
 
                         break;
                     }
-                    if (compteur == NBR_MAX_DE_COUP && tireRestant == 0) {
-                        printf("\n\n\n\n\n\n\nVous avez perdu !\nVous n'avez pas réussi a coulé tous les bateaux\n\n\n\n\n");
-                        fprintf(filePt,"\nPartie %d \n", nbPartie);
+                    if (compteur == NBR_MAX_DE_COUP && tire_restant == 0) {
+                        printf("\n\n\n\n\n\n\nVous avez perdu !\nVous n'avez pas réussi a coulé tous les bateaux\nSi vous voulez voir le(s) score(s) et le nbr de partie joué quitter le programme et ouvrez le fichier score.txt\n\n\n\n");
+                        fprintf(filePt,"\nPartie %d \n", nb_partie);
                         fprintf(filePt,"%s","Vous n'avez pas réussi a tout coulé");//inscrit le mot "Nom" dans le fichier
                         reset();
                         break;
@@ -114,8 +110,8 @@ void menu(FILE* filePt){
                 break;
 
             case 2:
-                system("color 9a");
-                printf("\nVoici les règles:\n\n\nUne fois appuié sur le boutton jouer choisissez les position ou vous vouler tirer et vous avez 50 tires au maximum\nLe but est de couler tout les bateaux ennemis.\nA savoir qu'il y a 5 sorte de bateau : un bateau avec 2 point de vie, un de 3 point de vie, un de 3 point de vie et un de 4 point de vie et un de 5 point de vie\n\n\n");
+
+                printf("\nVoici les règles:\n\n\nUne fois appuié sur le boutton jouer choisissez les positions ou vous voulez tirer et vous avez 50 tires au maximum\nLe but est de couler tout les bateaux ennemis.\nA savoir qu'il y a 5 sortes de bateaux : un bateau avec 2 points de vie, un de 3 points de vie, un autre de 3 point de vie, un de 4 points de vies et un dernier de 5 points de vie\n\n\n");
                 reset();
                 break;
 
@@ -138,7 +134,7 @@ void menu(FILE* filePt){
                 }
                 break;
 
-                
+
             default:
                 exit(0);
 

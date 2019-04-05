@@ -2,7 +2,7 @@
 //Titre: Bataille Navale
 //Date:13.02.2019
 //Description: Jeu vidéo sur une bataille navale
-//Version:1.0
+//Version:1.2
 
 #include <stdio.h>
 #include "Tableau.h"
@@ -21,22 +21,22 @@ void initialisation(){
     //boucle qui met la vaguelette du tableau char
     for (int ligne = 0; ligne < TABLEAU_LARGEUR; ligne++) {
         for (int col = 0; col < TABLEAU_LONGUEUR; col++) {
-            tableauAfficher[ligne][col] = *"~";
+            tableau_afficher[ligne][col] = *"~";
         }
     }
 
-    nbPartie=0;
-    tireRestant= NBR_MAX_DE_COUP;//variable qui affiche les tire restants
+    nb_partie=0;
+    tire_restant= NBR_MAX_DE_COUP;//variable qui affiche les tire restants
 
-    choixGrille=rand()%3+1;//Inscrit un nombre random a la variable choixGrille entre 1 et 3
+    choix_grille=rand()%3+1;//Inscrit un nombre random a la variable choixGrille entre 1 et 3
 
     //ce switch fait une selection aléatoir d'un des trois tableau d'analyse
-    switch(choixGrille){
+    switch(choix_grille){
         case 1:
             //boucle qui remet la vaguelette du tableau char
             for (int ligne = 0; ligne < TABLEAU_LARGEUR; ligne++) {
                 for (int col = 0; col < TABLEAU_LONGUEUR; col++) {
-                    tableauAnnalyserParOrdi[ligne][col]=tableauAnnalyserParOrdi1[ligne][col];
+                    tableau_annalyser_par_ordi[ligne][col]=tableau_annalyser_par_ordi1[ligne][col];
                 }
             }
             break;
@@ -45,7 +45,7 @@ void initialisation(){
             //boucle qui remet la vaguelette du tableau char
             for (int ligne = 0; ligne < TABLEAU_LARGEUR; ligne++) {
                 for (int col = 0; col < TABLEAU_LONGUEUR; col++) {
-                    tableauAnnalyserParOrdi[ligne][col]=tableauAnnalyserParOrdi2[ligne][col];
+                    tableau_annalyser_par_ordi[ligne][col]=tableau_annalyser_par_ordi2[ligne][col];
                 }
             }
             break;
@@ -54,7 +54,7 @@ void initialisation(){
             //boucle qui remet la vaguelette du tableau char
             for (int ligne = 0; ligne < TABLEAU_LARGEUR; ligne++) {
                 for (int col = 0; col < TABLEAU_LONGUEUR; col++) {
-                    tableauAnnalyserParOrdi[ligne][col]=tableauAnnalyserParOrdi3[ligne][col];
+                    tableau_annalyser_par_ordi[ligne][col]=tableau_annalyser_par_ordi3[ligne][col];
                 }
             }
             break;
@@ -73,9 +73,9 @@ int main() {
     system("color 9f");
     SetConsoleOutputCP(65001);//Pour que le programmes reconnaice les accents
 
-    char Prenom[255];//variable pour le prénom
-    char Nom[255];//variable pour le nom
-    unsigned int choix=0;//variable pour le choix de l'utilisateur et que le numéro minimum ne soit pas négatif
+    char prenom[255];//variable pour le prénom
+    char nom[255];//variable pour le nom
+    int choix=0;//variable pour le choix de l'utilisateur et que le numéro minimum ne soit pas négatif
     int quitter;//Cette variable sers a pouvoir quitter le programme
 
     FILE* filePt;//Cette variable sera utiliser pour enrgistrer des information dans un fichier
@@ -88,16 +88,15 @@ int main() {
 
 
     fprintf(filePt,"%s","Nom: ");//inscrit le mot "Nom" dans le fichier
-    scanf("%s", Nom);//demande puis inscrit le nom de l'utilisateur dans la variable "Nom"
-    fprintf(filePt,"%s \n",Nom);//Inscritcheh le contenu de la variable "Nom" dans le fichier
+    scanf("%s", nom);//demande puis inscrit le nom de l'utilisateur dans la variable "Nom"
+    fprintf(filePt,"%s \n",nom);//Inscritcheh le contenu de la variable "Nom" dans le fichier
 
     fprintf(filePt,"%s","Prénom: ");//inscrit le mot "Prenom" dans le fichier
-    scanf("%s", Prenom);//demande puis inscrit le nom de l'utilisateur dans la variable "Prenom"
-    fprintf(filePt,"%s\n",Prenom);//Inscrit le contenu de la variable "Prenom" dans le fichier
+    scanf("%s", prenom);//demande puis inscrit le nom de l'utilisateur dans la variable "Prenom"
+    fprintf(filePt,"%s\n",prenom);//Inscrit le contenu de la variable "Prenom" dans le fichier
 
 
-
-    printf("\nBonjour et bienvenu %s %s\n\nVous vous appreter a jouer au jeu de la bataille navale", Prenom, Nom);
+    printf("\nBonjour et bienvenu %s %s\n\nVous vous appreter a jouer au jeu de la bataille navale", prenom, nom);
     printf("\n_________________________________________________\n");
 
 

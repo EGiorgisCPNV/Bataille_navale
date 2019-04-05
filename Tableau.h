@@ -2,7 +2,7 @@
 //Titre: Bataille Navale
 //Date:13.02.2019
 //Description: Ce fichier est les tableaux utilisé
-//Version:1.0
+//Version:1.2
 
 #ifndef BATAILLENAVALEXA_TABLEAU_H
 #define BATAILLENAVALEXA_TABLEAU_H
@@ -29,32 +29,32 @@
 #define TABLEAU_LARGEUR 10
 #define TABLEAU_LONGUEUR 10
 
-char tableauAfficher[TABLEAU_LARGEUR][TABLEAU_LONGUEUR];
+char tableau_afficher[TABLEAU_LARGEUR][TABLEAU_LONGUEUR];
 
-int compteurVictoir = 0;//Elle sert afaire une boucle avec celci pour pour stoper la partie quand il a tout couler
+int compteur_victoir = 0;//Elle sert afaire une boucle avec celci pour pour stoper la partie quand il a tout couler
 int compteur=0;//se compteur sert a mettre une fin a la partie qu'elle que soit les circonstance
-int tireRestant;//variable qui affiche les tire restants
+int tire_restant;//variable qui affiche les tire restants
 
 
 
-unsigned int pointViTorpieur=0;
-unsigned int pointViSousMarin=0;
-unsigned int pointViContreTorpilleur=0;
-unsigned int pointViCroiseur=0;
-unsigned int pointViPorteAvion=0;
-unsigned int choixGrille;
+int point_vi_torpieur=0;
+int point_vi_sous_marin=0;
+int point_vi_contre_torpilleur=0;
+int point_vi_croiseur=0;
+int point_vi_porte_avion=0;
+int choix_grille;
 
-int chiffreADroite=1;//tout les chiffre a droite 1 à 10
-
-
-//tableau qui contient les bateau a coulé et est le tableau analyser par l'ordi pour ces calcules
-int tableauAnnalyserParOrdi[TABLEAU_LARGEUR][TABLEAU_LONGUEUR];
+int chiffre_a_droite=1;//tout les chiffre a droite 1 à 10
 
 
 //tableau qui contient les bateau a coulé et est le tableau analyser par l'ordi pour ces calcules
-int tableauAnnalyserParOrdi1[TABLEAU_LARGEUR][TABLEAU_LONGUEUR] = {
-        1, 1, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 2, 2, 2, 0, 0, 0, 0, 0, 0,
+int tableau_annalyser_par_ordi[TABLEAU_LARGEUR][TABLEAU_LONGUEUR];
+
+
+//tableau qui contient les bateau a coulé et est le tableau analyser par l'ordi pour ces calcules
+int tableau_annalyser_par_ordi1[TABLEAU_LARGEUR][TABLEAU_LONGUEUR] = {
+        1, 0, 0, 0, 0, 0, 0, 2, 2, 2,
+        1, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 3, 3, 3, 0, 0, 0,
         0, 0, 5, 0, 0, 0, 0, 0, 0, 0,
@@ -67,7 +67,7 @@ int tableauAnnalyserParOrdi1[TABLEAU_LARGEUR][TABLEAU_LONGUEUR] = {
 
 
 //tableau qui contient les bateau a coulé et est le tableau analyser par l'ordi pour ces calcules
-int tableauAnnalyserParOrdi2[TABLEAU_LARGEUR][TABLEAU_LONGUEUR] = {
+int tableau_annalyser_par_ordi2[TABLEAU_LARGEUR][TABLEAU_LONGUEUR] = {
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 2, 2, 2, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 1, 1,
@@ -82,7 +82,7 @@ int tableauAnnalyserParOrdi2[TABLEAU_LARGEUR][TABLEAU_LONGUEUR] = {
 
 
 //tableau qui contient les bateau a coulé et est le tableau analyser par l'ordi pour ces calcules
-int tableauAnnalyserParOrdi3[TABLEAU_LARGEUR][TABLEAU_LONGUEUR] = {
+int tableau_annalyser_par_ordi3[TABLEAU_LARGEUR][TABLEAU_LONGUEUR] = {
         1, 1, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 2, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 2, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -99,36 +99,36 @@ int tableauAnnalyserParOrdi3[TABLEAU_LARGEUR][TABLEAU_LONGUEUR] = {
 
 //fonction qui reset quand il a gagné ou perdu
 void reset(){
-    compteurVictoir = 0;//Elle sert afaire une boucle avec celci pour pour stoper la partie quand il a tout couler
+    compteur_victoir = 0;//Elle sert afaire une boucle avec celci pour pour stoper la partie quand il a tout couler
     compteur=0;//se compteur sert a mettre une fin a la partie qu'elle que soit les circonstance
 
-    choixGrille=rand()%3+1;//Inscrit un nombre random a la variable choixGrille entre 1 et 3
+    choix_grille=rand()%3+1;//Inscrit un nombre random a la variable choixGrille entre 1 et 3
 
     //ce switch fait une selection aléatoir d'un des trois tableau d'analyse
-    switch(choixGrille){
+    switch(choix_grille){
         case 1:
-            //boucle qui remet la vaguelette du tableau char
+            //boucle qui choisis la grille numéro 1
             for (int ligne = 0; ligne < TABLEAU_LARGEUR; ligne++) {
                 for (int col = 0; col < TABLEAU_LONGUEUR; col++) {
-                    tableauAnnalyserParOrdi[ligne][col]=tableauAnnalyserParOrdi1[ligne][col];
+                    tableau_annalyser_par_ordi[ligne][col]=tableau_annalyser_par_ordi1[ligne][col];
                 }
             }
             break;
 
         case 2:
-            //boucle qui remet la vaguelette du tableau char
+            //boucle qui choisis la grille numéro 2
             for (int ligne = 0; ligne < TABLEAU_LARGEUR; ligne++) {
                 for (int col = 0; col < TABLEAU_LONGUEUR; col++) {
-                    tableauAnnalyserParOrdi[ligne][col]=tableauAnnalyserParOrdi2[ligne][col];
+                    tableau_annalyser_par_ordi[ligne][col]=tableau_annalyser_par_ordi2[ligne][col];
                 }
             }
             break;
 
         case 3:
-            //boucle qui remet la vaguelette du tableau char
+            //boucle qui choisis la grille numéro 3
             for (int ligne = 0; ligne < TABLEAU_LARGEUR; ligne++) {
                 for (int col = 0; col < TABLEAU_LONGUEUR; col++) {
-                    tableauAnnalyserParOrdi[ligne][col]=tableauAnnalyserParOrdi3[ligne][col];
+                    tableau_annalyser_par_ordi[ligne][col]=tableau_annalyser_par_ordi3[ligne][col];
                 }
             }
             break;
@@ -140,17 +140,17 @@ void reset(){
     }
 
 
-    pointViTorpieur=0;
-    pointViSousMarin=0;
-    pointViContreTorpilleur=0;
-    pointViCroiseur=0;
-    pointViPorteAvion=0;
-    tireRestant=NBR_MAX_DE_COUP;//variable qui affiche les tire restants
+    point_vi_torpieur=0;
+    point_vi_sous_marin=0;
+    point_vi_contre_torpilleur=0;
+    point_vi_croiseur=0;
+    point_vi_porte_avion=0;
+    tire_restant=NBR_MAX_DE_COUP;//variable qui affiche les tire restants
 
     //boucle qui remet la vaguelette du tableau char
     for (int ligne = 0; ligne < TABLEAU_LARGEUR; ligne++) {
         for (int col = 0; col < TABLEAU_LONGUEUR; col++) {
-            tableauAfficher[ligne][col] = *"~";
+            tableau_afficher[ligne][col] = *"~";
         }
     }
 }
@@ -160,15 +160,14 @@ void reset(){
 
 
 //fonction qui travaille et affiche la grille
-void affichageGrille(int horizontal, int vertical) {
-
+void affichage_grille(int horizontal, int vertical) {
 
     //condition si toute les parties du bateau sont touchée indique coulé
-    switch(tableauAnnalyserParOrdi[horizontal-1][vertical-1]){
+    switch(tableau_annalyser_par_ordi[horizontal-1][vertical-1]){
         case  TORPIEUR:
             //Condition qui repete la demande de la coordonné si il a deja tiré dessus
-            if(tableauAfficher[horizontal - 1][vertical - 1] == *"X" || tableauAfficher[horizontal - 1][vertical - 1] == *"O"){
-                tireRestant++;
+            if(tableau_afficher[horizontal - 1][vertical - 1] == *"X" || tableau_afficher[horizontal - 1][vertical - 1] == *"O"){
+                tire_restant++;
                 printf("Vous avez deja touché cette case choisissez en une autre\n\n");
                 //boucle pour redemander a chaque fois les coordonée tant qu'il ne sont pas dans les règles
                 while(horizontal<1 || horizontal>10) {
@@ -182,16 +181,16 @@ void affichageGrille(int horizontal, int vertical) {
                 }
             }
             else{
-                pointViTorpieur++;
-                compteurVictoir++;
+                point_vi_torpieur++;
+                compteur_victoir++;
                 compteur++;
             }
 
             printf("\n\n\ntouché\n");
-            printf("Coup restant :%d\n", tireRestant);
+            printf("Coup restant :%d\n", tire_restant);
             //remplace la vagellette par X
-            tableauAfficher[horizontal - 1][vertical - 1] = *"X";
-            if(pointViTorpieur==POINT_VI_TORPIEUR){
+            tableau_afficher[horizontal - 1][vertical - 1] = *"X";
+            if(point_vi_torpieur==POINT_VI_TORPIEUR){
                 printf("vous avez couler le torpilleur\n");
             }
 
@@ -199,8 +198,8 @@ void affichageGrille(int horizontal, int vertical) {
 
         case SOUS_MARIN:
             //Condition qui repete la demande de la coordonné si il a deja tiré dessus
-            if(tableauAfficher[horizontal - 1][vertical - 1] == *"X" || tableauAfficher[horizontal - 1][vertical - 1] == *"O"){
-                tireRestant++;
+            if(tableau_afficher[horizontal - 1][vertical - 1] == *"X" || tableau_afficher[horizontal - 1][vertical - 1] == *"O"){
+                tire_restant++;
                 printf("Vous avez deja touché cette case choisissez en une autre\n\n");
                 //boucle pour redemander a chaque fois les coordonée tant qu'il ne sont pas dans les règles
                 while(horizontal<1 || horizontal>10) {
@@ -214,15 +213,15 @@ void affichageGrille(int horizontal, int vertical) {
                 }
             }
             else{
-                pointViSousMarin++;
-                compteurVictoir++;
+                point_vi_sous_marin++;
+                compteur_victoir++;
                 compteur++;
             }
             printf("\n\n\ntouché\n");
-            printf("Coup restant :%d\n", tireRestant);
+            printf("Coup restant :%d\n", tire_restant);
             //remplace la vagellette par X
-            tableauAfficher[horizontal - 1][vertical - 1] = *"X";
-            if (pointViSousMarin == POINT_VI_SOUS_MARIN) {
+            tableau_afficher[horizontal - 1][vertical - 1] = *"X";
+            if (point_vi_sous_marin == POINT_VI_SOUS_MARIN) {
                 printf("vous avez couler le sous-marin\n");
             }
 
@@ -231,8 +230,8 @@ void affichageGrille(int horizontal, int vertical) {
 
         case CONTRE_TORPILLEUR:
             //Condition qui repete la demande de la coordonné si il a deja tiré dessus
-            if(tableauAfficher[horizontal - 1][vertical - 1] == *"X" || tableauAfficher[horizontal - 1][vertical - 1] == *"O"){
-                tireRestant++;
+            if(tableau_afficher[horizontal - 1][vertical - 1] == *"X" || tableau_afficher[horizontal - 1][vertical - 1] == *"O"){
+                tire_restant++;
                 printf("Vous avez deja touché cette case choisissez en une autre\n\n");
                 //boucle pour redemander a chaque fois les coordonée tant qu'il ne sont pas dans les règles
                 while(horizontal<1 || horizontal>10) {
@@ -246,15 +245,15 @@ void affichageGrille(int horizontal, int vertical) {
                 }
             }
             else{
-                pointViContreTorpilleur++;
-                compteurVictoir++;
+                point_vi_contre_torpilleur++;
+                compteur_victoir++;
                 compteur++;
             }
             printf("\n\n\ntouché\n");
-            printf("Coup restant :%d\n", tireRestant);
+            printf("Coup restant :%d\n", tire_restant);
             //remplace la vagellette par X
-            tableauAfficher[horizontal - 1][vertical - 1] = *"X";
-            if(pointViContreTorpilleur==POINT_DE_VI_CONTRE_TORPILLEUR){
+            tableau_afficher[horizontal - 1][vertical - 1] = *"X";
+            if(point_vi_contre_torpilleur==POINT_DE_VI_CONTRE_TORPILLEUR){
                 printf("vous avez couler le contre-torpilleur\n");
             }
             break;
@@ -262,8 +261,8 @@ void affichageGrille(int horizontal, int vertical) {
 
         case CROISEUR:
             //Condition qui repete la demande de la coordonné si il a deja tiré dessus
-            if(tableauAfficher[horizontal - 1][vertical - 1] == *"X" || tableauAfficher[horizontal - 1][vertical - 1] == *"O"){
-                tireRestant++;
+            if(tableau_afficher[horizontal - 1][vertical - 1] == *"X" || tableau_afficher[horizontal - 1][vertical - 1] == *"O"){
+                tire_restant++;
                 printf("Vous avez deja touché cette case choisissez en une autre\n\n");
                 //boucle pour redemander a chaque fois les coordonée tant qu'il ne sont pas dans les règles
                 while(horizontal<1 || horizontal>10) {
@@ -277,23 +276,23 @@ void affichageGrille(int horizontal, int vertical) {
                 }
             }
             else{
-                pointViCroiseur++;
-                compteurVictoir++;
+                point_vi_croiseur++;
+                compteur_victoir++;
                 compteur++;
             }
             printf("\n\n\ntouché\n");
-            printf("Coup restant :%d\n", tireRestant);
+            printf("Coup restant :%d\n", tire_restant);
             //remplace la vagellette par X
-            tableauAfficher[horizontal - 1][vertical - 1] = *"X";
-            if(pointViCroiseur==POINT_VI_CROISEUR){
+            tableau_afficher[horizontal - 1][vertical - 1] = *"X";
+            if(point_vi_croiseur==POINT_VI_CROISEUR){
                 printf("vous avez couler le croiseur\n");
             }
             break;
 
         case PORTE_AVION:
             //Condition qui repete la demande de la coordonné si il a deja tiré dessus
-            if(tableauAfficher[horizontal - 1][vertical - 1] == *"X" || tableauAfficher[horizontal - 1][vertical - 1] == *"O"){
-                tireRestant++;
+            if(tableau_afficher[horizontal - 1][vertical - 1] == *"X" || tableau_afficher[horizontal - 1][vertical - 1] == *"O"){
+                tire_restant++;
                 printf("Vous avez deja touché cette case choisissez en une autre\n\n");
                 //boucle pour redemander a chaque fois les coordonée tant qu'il ne sont pas dans les règles
                 while(horizontal<1 || horizontal>10) {
@@ -307,15 +306,15 @@ void affichageGrille(int horizontal, int vertical) {
                 }
             }
             else{
-                pointViPorteAvion++;
-                compteurVictoir++;
+                point_vi_porte_avion++;
+                compteur_victoir++;
                 compteur++;
             }
             printf("\n\n\ntouché\n");
-            printf("Coup restant :%d\n", tireRestant);
+            printf("Coup restant :%d\n", tire_restant);
             //remplace la vagellette par X
-            tableauAfficher[horizontal - 1][vertical - 1] = *"X";
-            if(pointViPorteAvion==POINT_VIE_PORTE_AVIONS){
+            tableau_afficher[horizontal - 1][vertical - 1] = *"X";
+            if(point_vi_porte_avion==POINT_VIE_PORTE_AVIONS){
                 printf("vous avez couler le porte-avions\n");
 
             }
@@ -324,8 +323,8 @@ void affichageGrille(int horizontal, int vertical) {
 
         default:
             //Condition qui repete la demande de la coordonné si il a deja tiré dessus
-            if(tableauAfficher[horizontal - 1][vertical - 1] == *"X" || tableauAfficher[horizontal - 1][vertical - 1] == *"O"){
-                tireRestant++;
+            if(tableau_afficher[horizontal - 1][vertical - 1] == *"X" || tableau_afficher[horizontal - 1][vertical - 1] == *"O"){
+                tire_restant++;
                 printf("Vous avez deja touché cette case choisissez en une autre\n\n");
                 //boucle pour redemander a chaque fois les coordonée tant qu'il ne sont pas dans les règles
                 while(horizontal<1 || horizontal>10) {
@@ -342,9 +341,9 @@ void affichageGrille(int horizontal, int vertical) {
                 compteur++;
             }
             //remplace la vagellette par O
-            tableauAfficher[horizontal - 1][vertical - 1] = *"O";
+            tableau_afficher[horizontal - 1][vertical - 1] = *"O";
             printf("\n\n\nloupé\n");
-            printf("Coup restant :%d\n", tireRestant);
+            printf("Coup restant :%d\n", tire_restant);
 
     }
 
@@ -361,15 +360,15 @@ void affichageGrille(int horizontal, int vertical) {
         printf("\n");
 
 
-        if (chiffreADroite == 10) {      //Pour affiche les chiffre verticalement
-            printf("%d", chiffreADroite);
-            chiffreADroite=0;
+        if (chiffre_a_droite == 10) {      //Pour affiche les chiffre verticalement
+            printf("%d", chiffre_a_droite);
+            chiffre_a_droite=0;
         } else {
-            printf(" %d", chiffreADroite);
+            printf(" %d", chiffre_a_droite);
         }
-        chiffreADroite++;
+        chiffre_a_droite++;
         for (int colonne = 0; colonne < 10; colonne++) {
-            printf(" | %c |",tableauAfficher[ligne][colonne]);
+            printf(" | %c |",tableau_afficher[ligne][colonne]);
 
         }
 
