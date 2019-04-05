@@ -18,7 +18,7 @@
 
 //fonction qui initialise mes variable
 void initialisation(){
-    //boucle qui remet la vaguelette du tableau char
+    //boucle qui met la vaguelette du tableau char
     for (int ligne = 0; ligne < TABLEAU_LARGEUR; ligne++) {
         for (int col = 0; col < TABLEAU_LONGUEUR; col++) {
             tableauAfficher[ligne][col] = *"~";
@@ -27,6 +27,44 @@ void initialisation(){
 
     nbPartie=0;
     tireRestant= NBR_MAX_DE_COUP;//variable qui affiche les tire restants
+
+    choixGrille=rand()%3+1;//Inscrit un nombre random a la variable choixGrille entre 1 et 3
+
+    //ce switch fait une selection aléatoir d'un des trois tableau d'analyse
+    switch(choixGrille){
+        case 1:
+            //boucle qui remet la vaguelette du tableau char
+            for (int ligne = 0; ligne < TABLEAU_LARGEUR; ligne++) {
+                for (int col = 0; col < TABLEAU_LONGUEUR; col++) {
+                    tableauAnnalyserParOrdi[ligne][col]=tableauAnnalyserParOrdi1[ligne][col];
+                }
+            }
+            break;
+
+        case 2:
+            //boucle qui remet la vaguelette du tableau char
+            for (int ligne = 0; ligne < TABLEAU_LARGEUR; ligne++) {
+                for (int col = 0; col < TABLEAU_LONGUEUR; col++) {
+                    tableauAnnalyserParOrdi[ligne][col]=tableauAnnalyserParOrdi2[ligne][col];
+                }
+            }
+            break;
+
+        case 3:
+            //boucle qui remet la vaguelette du tableau char
+            for (int ligne = 0; ligne < TABLEAU_LARGEUR; ligne++) {
+                for (int col = 0; col < TABLEAU_LONGUEUR; col++) {
+                    tableauAnnalyserParOrdi[ligne][col]=tableauAnnalyserParOrdi3[ligne][col];
+                }
+            }
+            break;
+
+            //ce dernier case sert en cas de mauvaise valeur aléatoir due a une erreur de codage
+        default:
+            printf("\nProblème de valeur aléatoire!!\n");
+
+    }
+
 }
 
 
@@ -39,6 +77,7 @@ int main() {
     char Nom[255];//variable pour le nom
     unsigned int choix=0;//variable pour le choix de l'utilisateur et que le numéro minimum ne soit pas négatif
     int quitter;//Cette variable sers a pouvoir quitter le programme
+
     FILE* filePt;//Cette variable sera utiliser pour enrgistrer des information dans un fichier
     filePt=fopen("score.txt", "w");
 

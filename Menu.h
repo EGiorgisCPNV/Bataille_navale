@@ -34,18 +34,16 @@ void menu(FILE* filePt){
         switch (choix) {
 
             case 1:
-                system("color 9a");
+                system("color 90");
                 printf("--------------------------------------\n           Bataille navale\n--------------------------------------\n\n\n");
                 int vertical=0;//variable qui stocke la valeur de la colonne horizontal
                 int horizontal=0;//variable qui stocke la valeur de la colonne horizontal
                 int cadrillage_horizontal;//Boucle pour noter la numérotation de 1 a 10
                 int chiffreADroite=1;//tout les chiffre a droite 1 à 10
 
-
                 nbPartie++;
 
                 printf("Voici la grille\n");
-
 
                 //boucle pour afficher les chiffres horizontal
                 for(cadrillage_horizontal=1;cadrillage_horizontal<=10;cadrillage_horizontal++) {
@@ -122,28 +120,26 @@ void menu(FILE* filePt){
                 break;
 
             case 3:
-            printf("choisisser votre couleur(1-bleu, 2-noir, 3-jaune)");
-            scanf("%d", &couleur);
+                printf("choisisser votre couleur(1-bleu/noir, 2-cyan/noir, 3-noir/bleu)");
+                scanf("%d", &couleur);
 
-            //switch pour changer les couleurs
-            switch(couleur){
-                case 1:
-                    system("color 9a");
-                    break;
+                //switch pour changer les couleurs
+                switch(couleur){
+                    case 1:
+                        system("color 90");
+                        break;
 
-                case 2:
-                    system("color 9b");
-                    break;
+                    case 2:
+                        system("color b0");
+                        break;
 
-                default:
-                    system("color 9c");
+                    default:
+                        system("color 09");
+                }
+                break;
 
-            }
-
-            break;
-
+                
             default:
-
                 exit(0);
 
         }//fin du switch

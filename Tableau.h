@@ -10,6 +10,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <windows.h>
+#include <time.h> //pour rand
 
 #define TORPIEUR 1
 #define SOUS_MARIN 2
@@ -35,18 +36,109 @@ int compteur=0;//se compteur sert a mettre une fin a la partie qu'elle que soit 
 int tireRestant;//variable qui affiche les tire restants
 
 
+
 unsigned int pointViTorpieur=0;
 unsigned int pointViSousMarin=0;
 unsigned int pointViContreTorpilleur=0;
 unsigned int pointViCroiseur=0;
 unsigned int pointViPorteAvion=0;
+unsigned int choixGrille;
 
 int chiffreADroite=1;//tout les chiffre a droite 1 à 10
+
+
+//tableau qui contient les bateau a coulé et est le tableau analyser par l'ordi pour ces calcules
+int tableauAnnalyserParOrdi[TABLEAU_LARGEUR][TABLEAU_LONGUEUR];
+
+
+//tableau qui contient les bateau a coulé et est le tableau analyser par l'ordi pour ces calcules
+int tableauAnnalyserParOrdi1[TABLEAU_LARGEUR][TABLEAU_LONGUEUR] = {
+        1, 1, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 2, 2, 2, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 3, 3, 3, 0, 0, 0,
+        0, 0, 5, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 5, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 5, 0, 0, 0, 0, 0, 4, 0,
+        0, 0, 5, 0, 0, 0, 0, 0, 4, 0,
+        0, 0, 5, 0, 0, 0, 0, 0, 4, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 4, 0
+};
+
+
+//tableau qui contient les bateau a coulé et est le tableau analyser par l'ordi pour ces calcules
+int tableauAnnalyserParOrdi2[TABLEAU_LARGEUR][TABLEAU_LONGUEUR] = {
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 2, 2, 2, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 1, 1,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        3, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        3, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        3, 0, 0, 0, 0, 0, 0, 0, 4, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 4, 0,
+        0, 0, 5, 5, 5, 5, 5, 0, 4, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 4, 0
+};
+
+
+//tableau qui contient les bateau a coulé et est le tableau analyser par l'ordi pour ces calcules
+int tableauAnnalyserParOrdi3[TABLEAU_LARGEUR][TABLEAU_LONGUEUR] = {
+        1, 1, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 2, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 2, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 2, 0, 0, 3, 3, 3, 0, 0, 0,
+        0, 0, 5, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 5, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 5, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 5, 0, 4, 4, 4, 4, 0, 0,
+        0, 0, 5, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+};
+
+
 
 //fonction qui reset quand il a gagné ou perdu
 void reset(){
     compteurVictoir = 0;//Elle sert afaire une boucle avec celci pour pour stoper la partie quand il a tout couler
     compteur=0;//se compteur sert a mettre une fin a la partie qu'elle que soit les circonstance
+
+    choixGrille=rand()%3+1;//Inscrit un nombre random a la variable choixGrille entre 1 et 3
+
+    //ce switch fait une selection aléatoir d'un des trois tableau d'analyse
+    switch(choixGrille){
+        case 1:
+            //boucle qui remet la vaguelette du tableau char
+            for (int ligne = 0; ligne < TABLEAU_LARGEUR; ligne++) {
+                for (int col = 0; col < TABLEAU_LONGUEUR; col++) {
+                    tableauAnnalyserParOrdi[ligne][col]=tableauAnnalyserParOrdi1[ligne][col];
+                }
+            }
+            break;
+
+        case 2:
+            //boucle qui remet la vaguelette du tableau char
+            for (int ligne = 0; ligne < TABLEAU_LARGEUR; ligne++) {
+                for (int col = 0; col < TABLEAU_LONGUEUR; col++) {
+                    tableauAnnalyserParOrdi[ligne][col]=tableauAnnalyserParOrdi2[ligne][col];
+                }
+            }
+            break;
+
+        case 3:
+            //boucle qui remet la vaguelette du tableau char
+            for (int ligne = 0; ligne < TABLEAU_LARGEUR; ligne++) {
+                for (int col = 0; col < TABLEAU_LONGUEUR; col++) {
+                    tableauAnnalyserParOrdi[ligne][col]=tableauAnnalyserParOrdi3[ligne][col];
+                }
+            }
+            break;
+
+            //ce dernier case sert en cas de mauvaise valeur aléatoir due a une erreur de codage
+        default:
+            printf("\nProblème de valeur aléatoire!!\n");
+
+    }
+
 
     pointViTorpieur=0;
     pointViSousMarin=0;
@@ -63,26 +155,12 @@ void reset(){
     }
 }
 
+
+
+
+
 //fonction qui travaille et affiche la grille
 void affichageGrille(int horizontal, int vertical) {
-
-
-
-    //tableau qui contient les bateau a coulé et est le tableau analyser par l'ordi pour ces calcules
-    int tableauAnnalyserParOrdi[TABLEAU_LARGEUR][TABLEAU_LONGUEUR] = {
-            1, 1, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 2, 2, 2, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 3, 3, 3, 0, 0, 0,
-            0, 0, 5, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 5, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 5, 0, 0, 0, 0, 0, 4, 0,
-            0, 0, 5, 0, 0, 0, 0, 0, 4, 0,
-            0, 0, 5, 0, 0, 0, 0, 0, 4, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 4, 0
-    };
-
-
 
 
     //condition si toute les parties du bateau sont touchée indique coulé

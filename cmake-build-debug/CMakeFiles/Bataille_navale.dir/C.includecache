@@ -19,6 +19,8 @@ stdio.h
 -
 windows.h
 -
+time.h
+-
 
 C:/Users/Esteban.GIORGIS/CLionProjects/BatailleNavalExa/Repository/Bataille_navale/main.c
 stdio.h
